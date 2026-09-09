@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一封甜甜的信 · 写给你</title>
+<!-- === 字体：手写标题 + 圆润正文（Soft Pastel 路线） === -->
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* === 主题变量 · 樱花粉 === */
+:root{
+  --bg1:#ffeef2; --bg2:#ffe0e9; --bg3:#ffd3e0;
+  --deep:#a64d6d; --text:#6b4353; --pink:#ff8fab; --hot:#f6658d; --white:#fffdfa; --gold:#f7b267;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Noto Sans SC","PingFang SC",sans-serif; color:var(--text); overflow-x:hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 10%, rgba(255,255,255,.75), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 88% 85%, rgba(246,101,141,.16), transparent 55%),
+    linear-gradient(150deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
+  background-attachment:fixed;
+}
+/* === 氛围层：光斑 / 樱花 / 漂浮爱心 === */
+.blob{position:fixed; border-radius:50%; filter:blur(50px); opacity:.55; pointer-events:none; z-index:0}
+.blob1{width:320px;height:320px;background:#ffc7d6;top:-90px;left:-70px}
+.blob2{width:260px;height:260px;background:#fff3c9;bottom:-60px;right:-40px}
+.sakura{position:fixed; top:-6vh; z-index:1; animation:fall linear infinite; user-select:none; pointer-events:none; opacity:.85}
+.sakura:nth-of-type(1){left:6%; animation-duration:9s; font-size:20px}
+.sakura:nth-of-type(2){left:22%; animation-duration:12s; animation-delay:2s; font-size:14px}
+.sakura:nth-of-type(3){left:44%; animation-duration:10s; animation-delay:1s; font-size:24px}
+.sakura:nth-of-type(4){left:66%; animation-duration:13s; animation-delay:3.5s; font-size:15px}
+.sakura:nth-of-type(5){left:86%; animation-duration:11s; animation-delay:.5s; font-size:19px}
+.sakura:nth-of-type(6){left:33%; animation-duration:14s; animation-delay:6s; font-size:12px}
+@keyframes fall{
+  0%{transform:translateY(0) rotate(0)} 25%{transform:translate(18px,26vh) rotate(95deg)}
+  50%{transform:translate(-14px,52vh) rotate(190deg)} 75%{transform:translate(16px,80vh) rotate(280deg)}
+  100%{transform:translateY(110vh) rotate(380deg)}
+}
+.heart-f{position:fixed; bottom:-6vh; color:rgba(246,101,141,.5); z-index:1; animation:floatUp ease-in-out infinite; user-select:none; pointer-events:none}
+.heart-f:nth-of-type(1){left:14%; font-size:16px; animation-duration:8s}
+.heart-f:nth-of-type(2){left:58%; font-size:22px; animation-duration:10s; animation-delay:2.5s}
+.heart-f:nth-of-type(3){left:82%; font-size:14px; animation-duration:9s; animation-delay:5s}
+@keyframes floatUp{0%{transform:translateY(0); opacity:0}25%{opacity:.8}100%{transform:translateY(-110vh); opacity:0}}
+/* 爱心雨（结尾触发） */
+.rain-heart{position:fixed; top:-8vh; z-index:4; pointer-events:none; animation:rain linear forwards}
+@keyframes rain{0%{transform:translateY(0) rotate(-10deg); opacity:.95}100%{transform:translateY(115vh) rotate(320deg); opacity:.6}}
+
+/* === 内容层 === */
+.wrap{max-width:880px; margin:0 auto; padding:0 36px; position:relative; z-index:2}
+.badge{display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1.5px dashed var(--pink); color:var(--hot); border-radius:999px; padding:8px 20px; font-family:"Quicksand",sans-serif; font-weight:600; font-size:13px; letter-spacing:.18em; box-shadow:0 4px 14px rgba(246,101,141,.12)}
+h1{font-family:"Ma Shan Zheng","STKaiti","KaiTi",cursive; font-weight:400; font-size:clamp(40px,5.8vw,64px); color:var(--deep); margin:2.6vh 0 1vh; line-height:1.35}
+h1 span{color:var(--hot)}
+h2.sec{font-family:"Ma Shan Zheng",cursive; font-weight:400; font-size:clamp(28px,3.4vw,40px); color:var(--deep); margin-bottom:1.1em}
+h2.sec .tag{display:block; font-family:"Quicksand",sans-serif; font-size:12px; letter-spacing:.3em; color:var(--hot); margin-top:6px}
+.hero{min-height:100vh; display:flex; flex-direction:column; justify-content:center}
+.wiggle{display:inline-block; animation:wiggle 2.4s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(6deg) scale(1.12)}}
+/* 胶带卡片 */
+.card-wrap{position:relative; margin-top:1.6vh}
+.card{
+  background:rgba(255,253,250,.92); border-radius:26px; padding:clamp(28px,3.4vw,42px) clamp(26px,3.2vw,42px);
+  box-shadow:0 22px 50px rgba(214,109,140,.18), inset 0 2px 0 rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.8); max-width:44em;
+}
+.card p{font-size:clamp(15px,1.38vw,17.5px); line-height:2.05; text-align:justify}
+.card p + p{margin-top:.9em}
+.salut{font-family:"Ma Shan Zheng",cursive; font-size:clamp(22px,2.4vw,28px); color:var(--deep); margin-bottom:.8em}
+.hl{background:linear-gradient(transparent 62%, rgba(255,143,171,.42) 62%); font-weight:500}
+.tape{position:absolute; top:-14px; width:130px; height:30px; background:rgba(255,196,213,.75); border-radius:3px; box-shadow:0 2px 6px rgba(214,109,140,.18)}
+.tape.t1{left:50%; transform:translateX(-50%) rotate(-3deg)}
+.tape.t2{left:12%; transform:rotate(4deg)}
+.tape.t3{right:12%; transform:rotate(-5deg)}
+/* 高潮区 */
+.climax{text-align:center; padding:12vh 0 10vh}
+.climax .big{font-family:"Ma Shan Zheng",cursive; font-size:clamp(56px,10vw,120px); color:var(--hot); text-shadow:0 6px 0 rgba(255,255,255,.7), 0 14px 34px rgba(246,101,141,.3); letter-spacing:.14em; line-height:1.25}
+.climax .card{margin:4vh auto 0; text-align:left}
+/* 收尾 */
+.finale{text-align:center; padding-bottom:15vh}
+.finale .card{margin:0 auto; text-align:left}
+.finale .sign{font-family:"Ma Shan Zheng",cursive; font-size:clamp(26px,3vw,34px); color:var(--deep); margin-top:3.4vh}
+.finale .pill{display:inline-block; margin-top:2vh; background:var(--white); border-radius:999px; padding:10px 24px; font-size:13px; letter-spacing:.16em; color:var(--hot); box-shadow:0 4px 14px rgba(246,101,141,.14); font-family:"Quicksand",sans-serif; font-weight:600}
+section{padding:9vh 0}
+/* 弹性入场 */
+.pop{opacity:0; transform:scale(.94) translateY(18px); transition:opacity .8s cubic-bezier(.34,1.4,.64,1), transform .8s cubic-bezier(.34,1.4,.64,1)}
+.pop.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){
+  .pop{opacity:1; transform:none; transition:none}
+  .sakura,.heart-f,.wiggle{animation:none}
+}
+</style>
+</head>
+<body>
+<!-- === 氛围层 === -->
+<div class="blob blob1"></div><div class="blob blob2"></div>
+<div class="sakura">🌸</div><div class="sakura">🌸</div><div class="sakura">🌸</div><div class="sakura">🌸</div><div class="sakura">🌸</div><div class="sakura">🌸</div>
+<div class="heart-f">💗</div><div class="heart-f">💗</div><div class="heart-f">💗</div>
+
+<main class="wrap">
+
+  <!-- 封面 -->
+  <section class="hero">
+    <div class="badge pop">💌 A LOVE LETTER FOR YOU</div>
+    <h1 class="pop">这就是<span>心动</span>的感觉<span class="wiggle">💗</span></h1>
+    <div class="card-wrap pop">
+      <div class="tape t1"></div>
+      <div class="card">
+        <p class="salut">亲爱的宝贝：</p>
+        <p>见字如面。此刻，我坐在窗边，阳光透过薄纱洒在纸上，暖暖的，就像你给我的感觉。提起笔，千言万语涌上心头，却又不知从何说起，只能将满心的欢喜和眷恋，都揉进这封信里，寄给你。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一 · 心动 -->
+  <section>
+    <h2 class="sec pop">一束光闯了进来<span class="tag">CHAPTER 1 · 心动</span></h2>
+    <div class="card-wrap pop">
+      <div class="tape t2"></div>
+      <div class="card">
+        <p>认识你之前，我的世界是平淡的，像一幅未着色的画卷，虽有轮廓，却少了灵动的色彩。而你，就像<span class="hl">一束光</span>，突然闯进了我的生活，瞬间点亮了一切。</p>
+        <p>第一次见到你，你站在那里，微微笑着，眼神里满是温柔，那一刻，我的心就乱了节奏。我告诉自己，<span class="hl">这就是心动的感觉</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二 · 小路 -->
+  <section>
+    <h2 class="sec pop">那条开满花的小路<span class="tag">CHAPTER 2 · 时光</span></h2>
+    <div class="card-wrap pop">
+      <div class="tape t3"></div>
+      <div class="card">
+        <p>和你在一起的时光，是我最珍贵的宝藏。还记得我们一起走过的那条小路吗？两旁是盛开的花朵，空气中弥漫着甜香。你牵着我的手，紧紧的，仿佛怕我会突然消失。我靠在你肩上，感受着你的体温，心里满是甜蜜。</p>
+        <p>我们聊着天，说着彼此的梦想和过去，那些平凡的话语，在那一刻都变得<span class="hl">闪闪发光</span>。我多么希望时间能停留在那一刻，让我永远沉浸在这幸福里。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三 · 依靠 -->
+  <section>
+    <h2 class="sec pop">你是最坚实的依靠<span class="tag">CHAPTER 3 · 安全感</span></h2>
+    <div class="card-wrap pop">
+      <div class="tape t2"></div>
+      <div class="card">
+        <p>你给我的安全感，是我从未有过的。每当我遇到困难，感到害怕和迷茫时，只要想到你，就会变得勇敢。你总是耐心地听我说完，然后给我一个温暖的拥抱，告诉我一切都会好起来。</p>
+        <p>你的眼神里满是坚定，让我相信，只要有你在，就没有什么是过不去的。我依赖你，就像小树依赖着大地，<span class="hl">你就是我生命中最坚实的依靠</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四 · 包容 -->
+  <section>
+    <h2 class="sec pop">喜欢真实的你<span class="tag">CHAPTER 4 · 包容</span></h2>
+    <div class="card-wrap pop">
+      <div class="tape t3"></div>
+      <div class="card">
+        <p>我也知道，爱情不仅仅是甜蜜和依赖，还有包容和理解。你有时候会犯小脾气，会因为一些小事而烦恼，但我从不觉得这是问题。因为我知道，这就是你，一个真实、有血有肉的你。</p>
+        <p>我喜欢你的一切，包括你的优点和缺点。我会在你生气的时候，轻轻握住你的手，等你冷静下来；会在你开心的时候，和你一起欢笑，分享你的快乐。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 高潮 · 我爱你 -->
+  <section class="climax">
+    <div class="big pop">我爱你<span class="wiggle" style="font-size:.5em">💗</span></div>
+    <div class="card-wrap pop" style="display:inline-block; text-align:left">
+      <div class="tape t1"></div>
+      <div class="card">
+        <p>我想和你一起走过更多的路，看更多的风景。</p>
+        <p>我爱你，这三个字虽然简单，却包含了我全部的情感。我爱你的笑容，你的眼眸，你的温柔，你的坚定，你的<span class="hl">每一个小动作</span>，你的每一次呼吸。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 收尾 -->
+  <section class="finale">
+    <div class="card-wrap pop" style="text-align:left">
+      <div class="tape t2"></div>
+      <div class="card">
+        <p>希望你能明白，我的心早已属于你，无论未来怎样，我都愿意<span class="hl">牵着你的手，一起走过</span>。</p>
+      </div>
+    </div>
+    <div class="sign pop">—— 永远爱你的 Tao</div>
+    <div class="pill pop">WITH LOVE, TODAY AND EVERY DAY · 2026</div>
+  </section>
+</main>
+
+<script>
+/* === 滚动弹性入场 === */
+(function(){
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.pop');
+  if (reduced || !('IntersectionObserver' in window)){ els.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .16 });
+  els.forEach(e => io.observe(e));
+
+  /* === 收尾爱心雨：进入结尾区时下一场小心心的雨 === */
+  const finale = document.querySelector('.finale');
+  const glyphs = ['💗','💕','💖'];
+  function rain(){
+    for (let i = 0; i < 26; i++){
+      const h = document.createElement('div');
+      h.className = 'rain-heart';
+      h.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+      h.style.left = Math.random() * 96 + 'vw';
+      h.style.fontSize = 12 + Math.random() * 16 + 'px';
+      h.style.animationDuration = 4 + Math.random() * 3.5 + 's';
+      h.style.animationDelay = Math.random() * 2.2 + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 9500);
+    }
+  }
+  const io2 = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting){ if (!reduced) rain(); io2.disconnect(); } });
+  }, { threshold: .35 });
+  io2.observe(finale);
+})();
+</script>
+</body>
+</html>
